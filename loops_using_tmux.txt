@@ -1,0 +1,13 @@
+# Running a loop in large files using tmux 
+tmux new -s compacting
+for file in *.fa; do
+    sudo zip "${file%_assembly1.fa}_assembly.zip" "$file" && echo "$file compacted succesfully"
+done
+
+for file in *.fa_prokka; do
+    sudo zip "${file%_assembly1.fa}_assembly.zip" "$file" && echo "$file" compacted succesfully"
+done
+
+# Press Ctrl + B, then release both keys and press D. This will detach you from the tmux session and return you to the regular terminal
+
+tmux attach -t compacting # going back to a session already created 
