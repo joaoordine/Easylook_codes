@@ -1,0 +1,11 @@
+## Transfering files from server to my computer using tunnel 
+exit # if you're inside aguia4, you exit to shark. If not, simply enter shark using ssh. You'll see a black screen, with hidden folders
+cd .ssh
+ls # you'll see the key id_ed25519 
+less id_ed25519 # Copy its content and paste it in a file on your computer's .ssh directory
+vim id_ed25519 # and then paste it inside this file
+ chmod 700 ./id_ed25519 # protecting the file i just created 
+ssh -X -2 -L 8020:aguia4:22 11217468@shark.hpc.usp.br # open the tunnel. Let this terminal open and in another one, run the command
+scp -r -P 8020 -i ./id_ed25519 11217468@localhost:/temporario/11217468/Saureus_genomes/genome_quality_filt_Whead.txt /home/joao/Documents/IC3/S_aureus_genomes
+# if you want to send from your computer to the server, just replace the order of the arguments after the access key
+
