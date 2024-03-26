@@ -1,0 +1,21 @@
+# Retrieving only specific lines of a large dataset in R
+
+## Load necessary library if not already loaded
+install.packages("dplyr")  
+library(dplyr)
+
+## Filter rows where query.name is "nanT_align"
+filtered_nanT <- final_HMM_output_removed_cols %>%
+  filter(query.name == "nanT_align")
+
+## Print the filtered dataframe
+print(filtered_nanT)
+
+## Save the filtered dataframe as a TSV file
+write.table(filtered_nanT, file = "filtered_data.tsv", sep = "\t", quote = FALSE, row.names = FALSE)
+
+## Counting occurances of nanT in each unique genome
+nanT_counts <- table(filtered_nanT$genome.code)
+
+## Save this
+write.table(nanT_counts, file = "nanT_counts.tsv", sep = "\t", quote = FALSE, row.names = FALSE)
