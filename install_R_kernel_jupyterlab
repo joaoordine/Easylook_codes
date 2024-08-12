@@ -1,0 +1,11 @@
+# Install R kernel in jupyter lab -> tutorial: https://www.youtube.com/watch?v=1sq-Pcq9W7c
+
+## Check downloaded kernels 
+jupyter kernelspec list
+
+## Open R on terminal 
+install.packages("IRkernel")
+IRkernel::installspec(user = TRUE)
+q()
+
+jupyter-lab # the R symbol should appear 
