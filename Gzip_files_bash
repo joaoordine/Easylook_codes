@@ -1,0 +1,2 @@
+# To gzip files that end with a specific pattern:
+cat *_genomic-ARGs.txt | gzip > abricate_ARGs_raw.gz # we'll concatenate them all in one and then gzip them with a specific file name
