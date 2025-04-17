@@ -1,0 +1,9 @@
+# Count - roughly - number of reads in fastq files
+
+#!/bin/bash
+
+for file in *_filt.fastq; do
+    lines=$(wc -l < "$file")
+    reads=$((lines / 4))
+    echo "$file: $reads reads"
+done
