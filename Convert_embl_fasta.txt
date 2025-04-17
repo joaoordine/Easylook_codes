@@ -1,0 +1,4 @@
+for file in *.embl; do
+    base=$(basename "$file" .embl)
+    seqret -sequence "$file" -outseq "${base}.fasta"
+done
