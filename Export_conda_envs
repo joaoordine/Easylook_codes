@@ -1,0 +1,6 @@
+# Export an entire conda environment to another computer 
+- On your computer with the conda environment you want to transfer, you should 
+1) conda activate <env_name>
+2) conda env export > <env_name>.yml
+- On your new computer, import the environment 
+3) conda env create -f <env_name>.yml
