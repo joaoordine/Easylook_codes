@@ -1,0 +1,31 @@
+# 1. Initialize Git (if not already a repo)
+cd ~/Documents/Collaborations/sabrina-vania # must be inside directory u want to push to github
+git init 
+
+# 2. Link to your existing remote repo
+##Your repo:
+##https://github.com/joaoordine/asthma_obesity_murine_microbiota
+##Add it as origin:
+git remote add origin https://github.com/joaoordine/asthma_obesity_murine_microbiota.git
+
+## Check:
+git remote -v
+
+# 3. Pull first (IMPORTANT to avoid conflicts)
+##Since the remote already has files:
+git branch -M main
+git pull origin main --allow-unrelated-histories 
+##That --allow-unrelated-histories is key if your local repo was initialized separately.
+
+# 4. Add your files
+git add . #add all files inside dir
+
+# 5. Commit
+git commit -m "Add microbiota analysis notebooks and structure"
+
+# 6. Push to GitHub
+git push origin main
+
+# check if it worked 
+git status
+## should say: nothing to commit, working tree clean. 
