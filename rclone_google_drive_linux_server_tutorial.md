@@ -138,3 +138,40 @@ rclone size "google-drive-ipmon:joao"
 - `rclone` resumes interrupted downloads automatically.
 - Add shared folders as shortcuts to **My Drive** if they don't appear.
 - Never share OAuth tokens. If exposed, revoke access and reconnect `rclone`.
+
+## Notes2
+- Check if all desired files were downloaded, if not, run mannually each missing barcode:
+- Download the remaining barcode folders:
+```bash
+#!/bin/bash
+
+for barcode in 55 56 58 59 62 65 66 67 69 72
+do
+    echo "Downloading barcode${barcode}..."
+
+    mkdir -p ~/gridion_data/basecalling/pass/barcode${barcode}
+
+    rclone copy \
+        "google-drive-ipmon:joao/pass/basecalling/pass/barcode${barcode}" \
+        ~/gridion_data/basecalling/pass/barcode${barcode} \
+        --progress \
+        --transfers 8 \
+        --checkers 16 \
+        --fast-list
+done
+
+echo "Downloading unclassified..."
+
+mkdir -p ~/gridion_data/basecalling/pass/unclassified
+
+rclone copy \
+    "google-drive-ipmon:joao/pass/basecalling/pass/unclassified" \
+    ~/gridion_data/basecalling/pass/unclassified \
+    --progress \
+    --transfers 8 \
+    --checkers 16 \
+    --fast-list
+
+echo "Done!"
+```
+
